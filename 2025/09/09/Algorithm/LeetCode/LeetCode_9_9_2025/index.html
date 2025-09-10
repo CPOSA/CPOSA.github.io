@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="[&quot;en&quot;,&quot;zh-CN&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode 2025.9.9 | CPOSA's Blog</title><meta name="author" content="CPOSA"><meta name="copyright" content="CPOSA"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="283 移动0维护两个指针，其中一个遍历数组，另一个指针只在非0时移动，并按顺序将后一个指针的值赋给前一个 279 完全平方数dp问题， 完全背包 dp[i]表示数字i需要最少 dp[i]个完全平方数相加dp[i] &#x3D; min(dp[i-n*n] +1 , dp[i]) 253 会议室2维护一个小顶堆，存入每个会议室的结束时间，用来代表正在使用的会议室数量 需要按开始时间排序 1list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 2025.9.9">
+<meta property="og:url" content="https://cposa.github.io/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/index.html">
+<meta property="og:site_name" content="CPOSA&#39;s Blog">
+<meta property="og:description" content="283 移动0维护两个指针，其中一个遍历数组，另一个指针只在非0时移动，并按顺序将后一个指针的值赋给前一个 279 完全平方数dp问题， 完全背包 dp[i]表示数字i需要最少 dp[i]个完全平方数相加dp[i] &#x3D; min(dp[i-n*n] +1 , dp[i]) 253 会议室2维护一个小顶堆，存入每个会议室的结束时间，用来代表正在使用的会议室数量 需要按开始时间排序 1list">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cposa.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-09-09T14:36:18.173Z">
+<meta property="article:modified_time" content="2025-09-09T19:30:12.692Z">
+<meta property="article:author" content="CPOSA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cposa.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LeetCode 2025.9.9",
+  "url": "https://cposa.github.io/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/",
+  "image": "https://cposa.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-09-09T14:36:18.173Z",
+  "dateModified": "2025-09-09T19:30:12.692Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "CPOSA",
+      "url": "https://cposa.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cposa.github.io/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode 2025.9.9',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">CPOSA's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">LeetCode 2025.9.9</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">LeetCode 2025.9.9</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-09-09T14:36:18.173Z" title="Created 2025-09-09 09:36:18">2025-09-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-09-09T19:30:12.692Z" title="Updated 2025-09-09 14:30:12">2025-09-09</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/">Algorithm</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/LeetCode/">LeetCode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="283-移动0"><a href="#283-移动0" class="headerlink" title="283 移动0"></a>283 移动0</h1><p>维护两个指针，其中一个遍历数组，另一个指针只在非0时移动，并按顺序将后一个指针的值赋给前一个</p>
+<h1 id="279-完全平方数"><a href="#279-完全平方数" class="headerlink" title="279 完全平方数"></a>279 完全平方数</h1><p>dp问题， 完全背包</p>
+<p>dp[i]表示数字i需要最少 dp[i]个完全平方数相加<br>dp[i] &#x3D; min(dp[i-n*n] +1 , dp[i])</p>
+<h1 id="253-会议室2"><a href="#253-会议室2" class="headerlink" title="253 会议室2"></a>253 会议室2</h1><p>维护一个小顶堆，存入每个会议室的结束时间，用来代表正在使用的会议室数量</p>
+<p>需要按开始时间排序</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.<span class="built_in">sort</span>(<span class="built_in">key</span>=<span class="built_in">lambda</span> x: x[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+<p>对于每个会议，如果开始时间大于小顶堆的堆顶则弹出，并压入当前会议的结束时间</p>
+<h1 id="240-搜索二维矩阵-2"><a href="#240-搜索二维矩阵-2" class="headerlink" title="240 搜索二维矩阵 2"></a>240 搜索二维矩阵 2</h1><p>直接遍历</p>
+<p>从右上角开始搜索，如果比当前的值大，向下走，如果比当前值小，向左走</p>
+<h1 id="239-滑动窗口最大值"><a href="#239-滑动窗口最大值" class="headerlink" title="239 滑动窗口最大值"></a>239 滑动窗口最大值</h1><p>暴力解，直接遍历，每个窗口，求最大值</p>
+<p>使用队列，构建单调队列，只要保证当前窗口的最大值在首位, 当新元素进入队列时，如果比前一个元素大，则弹出直到前一个元素大于进入元素后再进入</p>
+<p>自定义单调队列</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">myQueue</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.queue = deque()</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pop</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.queue <span class="keyword">and</span> value == <span class="variable language_">self</span>.queue[<span class="number">0</span>]:</span><br><span class="line">            <span class="variable language_">self</span>.queue.popleft(value)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">push</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="keyword">while</span> <span class="variable language_">self</span>.queue <span class="keyword">and</span> value &gt; <span class="variable language_">self</span>.queue[-<span class="number">1</span>]:</span><br><span class="line">            <span class="variable language_">self</span>.queue.pop()</span><br><span class="line">        <span class="variable language_">self</span>.queue.append(value)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">front</span>(<span class="params">self, value</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.queue[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://cposa.github.io">CPOSA</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://cposa.github.io/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/">https://cposa.github.io/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/09/08/RL/First_week/" title="MDP, value function, Bellman function"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">MDP, value function, Bellman function</div></div><div class="info-2"><div class="info-item-1">MDPDefine    An Finite MDP is defined by:  A finite set of states $s \in S$ A finite set of action $a \in A$ A transition function $T(s, a, s’)$ Probablity that a fprm S leads to $s’$, ie. $P(s’|s,a)$ also called the model or the dynamics   A reward function $R(s)$ (Sometimes R(s,a) or R(s,a,s’)) A start state Maybe a terminal state            we have $||V||_{\infin} &#x3D; \underset{s}{max} |V(s)| $, ||V|| is norm $BV(k) &#x3D; R(s) + \gamma \underset{a \in A}{\text{max}} \underset{s’ \in S}...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CPOSA</div><div class="author-info-description">A Blog about learning / 学习博客</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">10</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#283-%E7%A7%BB%E5%8A%A80"><span class="toc-number">1.</span> <span class="toc-text">283 移动0</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#279-%E5%AE%8C%E5%85%A8%E5%B9%B3%E6%96%B9%E6%95%B0"><span class="toc-number">2.</span> <span class="toc-text">279 完全平方数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#253-%E4%BC%9A%E8%AE%AE%E5%AE%A42"><span class="toc-number">3.</span> <span class="toc-text">253 会议室2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#240-%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5-2"><span class="toc-number">4.</span> <span class="toc-text">240 搜索二维矩阵 2</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#239-%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3%E6%9C%80%E5%A4%A7%E5%80%BC"><span class="toc-number">5.</span> <span class="toc-text">239 滑动窗口最大值</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/" title="LeetCode 2025.9.9">LeetCode 2025.9.9</a><time datetime="2025-09-09T14:36:18.173Z" title="Created 2025-09-09 09:36:18">2025-09-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/08/RL/First_week/" title="MDP, value function, Bellman function">MDP, value function, Bellman function</a><time datetime="2025-09-08T15:26:28.177Z" title="Created 2025-09-08 10:26:28">2025-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/08/Algorithm/LeetCode/LeetCode_9_8_2025/" title="LeetCode 2025.9.8">LeetCode 2025.9.8</a><time datetime="2025-09-08T14:22:24.842Z" title="Created 2025-09-08 09:22:24">2025-09-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/07/LLM/05.%20Language%20Model%20Reasoning%20(I)_%20Chain%20of%20Thoughts%20+%20Inference-Time%20Scaling/" title="Language Model Reasoning(I)">Language Model Reasoning(I)</a><time datetime="2025-09-07T05:00:00.000Z" title="Created 2025-09-07 00:00:00">2025-09-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/04/Algorithm/LeetCode/LeetCode_9_4_2025/" title="LeetCode 2025.9.4">LeetCode 2025.9.4</a><time datetime="2025-09-04T19:40:24.947Z" title="Created 2025-09-04 14:40:24">2025-09-04</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By CPOSA</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
