@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="[&quot;en&quot;,&quot;zh-CN&quot;,&quot;default&quot;]" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode 2025.9.10 | CPOSA's Blog</title><meta name="author" content="CPOSA"><meta name="copyright" content="CPOSA"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="22 括号生成树的深度优先搜索，维护两个计数器，分别记录“（”和“）”的数量 两种括号的数量都应该小于n 且“）”数量应该小于“（” 49 字母异位词分组先把每字符串都贴上标签作为key，使用元组tuple作为hash表的key 把每个字符的key和字符本身都存入defaultdict(list)中 12345#适合做分组和聚合d &#x3D; defaultdict(list)#访问for key, va">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode 2025.9.10">
+<meta property="og:url" content="https://cposa.github.io/2025/09/10/Algorithm/LeetCode/LeetCode_9_10_2025/index.html">
+<meta property="og:site_name" content="CPOSA&#39;s Blog">
+<meta property="og:description" content="22 括号生成树的深度优先搜索，维护两个计数器，分别记录“（”和“）”的数量 两种括号的数量都应该小于n 且“）”数量应该小于“（” 49 字母异位词分组先把每字符串都贴上标签作为key，使用元组tuple作为hash表的key 把每个字符的key和字符本身都存入defaultdict(list)中 12345#适合做分组和聚合d &#x3D; defaultdict(list)#访问for key, va">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cposa.github.io/img/butterfly-icon.png">
+<meta property="article:published_time" content="2025-09-10T17:32:25.434Z">
+<meta property="article:modified_time" content="2025-09-10T21:31:40.999Z">
+<meta property="article:author" content="CPOSA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cposa.github.io/img/butterfly-icon.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LeetCode 2025.9.10",
+  "url": "https://cposa.github.io/2025/09/10/Algorithm/LeetCode/LeetCode_9_10_2025/",
+  "image": "https://cposa.github.io/img/butterfly-icon.png",
+  "datePublished": "2025-09-10T17:32:25.434Z",
+  "dateModified": "2025-09-10T21:31:40.999Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "CPOSA",
+      "url": "https://cposa.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://cposa.github.io/2025/09/10/Algorithm/LeetCode/LeetCode_9_10_2025/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode 2025.9.10',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">CPOSA's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">LeetCode 2025.9.10</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">LeetCode 2025.9.10</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-09-10T17:32:25.434Z" title="Created 2025-09-10 12:32:25">2025-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-09-10T21:31:40.999Z" title="Updated 2025-09-10 16:31:40">2025-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/">Algorithm</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/LeetCode/">LeetCode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="22-括号生成"><a href="#22-括号生成" class="headerlink" title="22 括号生成"></a>22 括号生成</h1><p>树的深度优先搜索，维护两个计数器，分别记录“（”和“）”的数量</p>
+<p>两种括号的数量都应该小于n</p>
+<p>且“）”数量应该小于“（”</p>
+<h1 id="49-字母异位词分组"><a href="#49-字母异位词分组" class="headerlink" title="49 字母异位词分组"></a>49 字母异位词分组</h1><p>先把每字符串都贴上标签作为key，使用元组tuple作为hash表的key</p>
+<p>把每个字符的key和字符本身都存入defaultdict(list)中</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#适合做分组和聚合</span></span><br><span class="line">d = defaultdict(list)</span><br><span class="line"></span><br><span class="line"><span class="comment">#访问</span></span><br><span class="line"><span class="keyword">for</span> key, values <span class="keyword">in</span> d.<span class="keyword">items</span>():</span><br></pre></td></tr></table></figure>
+
+<h1 id="48-旋转图像"><a href="#48-旋转图像" class="headerlink" title="48 旋转图像"></a>48 旋转图像</h1><p>新建一个矩阵保存，最后在遍历修改</p>
+<p>转置 + 每行反转</p>
+<h1 id="46-全排列"><a href="#46-全排列" class="headerlink" title="46 全排列"></a>46 全排列</h1><p>回溯算法, 遍历每一个数字，选中当前数字时，将使用数组used置1，递归进行下层运算</p>
+<p>在离开递归时需要将本次选中的数组从used数组移出，同时，组合记录也需要移除</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(nums)):</span><br><span class="line">    <span class="keyword">if</span> used<span class="selector-attr">[i]</span> == <span class="number">0</span>:</span><br><span class="line">        <span class="selector-tag">path</span><span class="selector-class">.append</span>(nums<span class="selector-attr">[i]</span>)</span><br><span class="line">        used<span class="selector-attr">[i]</span> = <span class="number">1</span></span><br><span class="line">        <span class="built_in">search</span>(nums, <span class="selector-tag">path</span>, res, used)</span><br><span class="line">        used<span class="selector-attr">[i]</span> = <span class="number">0</span></span><br><span class="line">        <span class="selector-tag">path</span><span class="selector-class">.pop</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="42-接雨水"><a href="#42-接雨水" class="headerlink" title="42 接雨水"></a>42 接雨水</h1><p>双指针法，对于每一个柱子，记录左边最大高度和右边最大高度</p>
+<p>右边最大高度为当前柱子高度和右边柱子最大高度的最大值，同理左边最大高度</p>
+<p>单调栈，保持栈内元素有序</p>
+<p>对于本题，维护递减栈，当需要进入的高度高于栈顶时，弹出</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://cposa.github.io">CPOSA</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://cposa.github.io/2025/09/10/Algorithm/LeetCode/LeetCode_9_10_2025/">https://cposa.github.io/2025/09/10/Algorithm/LeetCode/LeetCode_9_10_2025/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/butterfly-icon.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/09/10/Algorithm/Link_list/" title="链表 link list"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">链表 link list</div></div><div class="info-2"><div class="info-item-1">链表理论基础</div></div></div></a><a class="pagination-related" href="/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/" title="LeetCode 2025.9.9"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">LeetCode 2025.9.9</div></div><div class="info-2"><div class="info-item-1">283 移动0维护两个指针，其中一个遍历数组，另一个指针只在非0时移动，并按顺序将后一个指针的值赋给前一个 279 完全平方数dp问题， 完全背包 dp[i]表示数字i需要最少 dp[i]个完全平方数相加dp[i] &#x3D; min(dp[i-n*n] +1 , dp[i]) 253 会议室2维护一个小顶堆，存入每个会议室的结束时间，用来代表正在使用的会议室数量 需要按开始时间排序 1list.sort(key=lambda x: x[0])  对于每个会议，如果开始时间大于小顶堆的堆顶则弹出，并压入当前会议的结束时间 240 搜索二维矩阵 2直接遍历 从右上角开始搜索，如果比当前的值大，向下走，如果比当前值小，向左走 239 滑动窗口最大值暴力解，直接遍历，每个窗口，求最大值 使用队列，构建单调队列，只要保证当前窗口的最大值在首位, 当新元素进入队列时，如果比前一个元素大，则弹出直到前一个元素大于进入元素后再进入 自定义单调队列 123456789101112class myQueue:    def __init__(self):        self.queue = ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">CPOSA</div><div class="author-info-description">A Blog about learning / 学习博客</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#22-%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90"><span class="toc-number">1.</span> <span class="toc-text">22 括号生成</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#49-%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84"><span class="toc-number">2.</span> <span class="toc-text">49 字母异位词分组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#48-%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F"><span class="toc-number">3.</span> <span class="toc-text">48 旋转图像</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#46-%E5%85%A8%E6%8E%92%E5%88%97"><span class="toc-number">4.</span> <span class="toc-text">46 全排列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#42-%E6%8E%A5%E9%9B%A8%E6%B0%B4"><span class="toc-number">5.</span> <span class="toc-text">42 接雨水</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/11/Algorithm/LeetCode/LeetCode_9_11_2025/" title="LeetCode 2025.9.11">LeetCode 2025.9.11</a><time datetime="2025-09-11T15:54:09.143Z" title="Created 2025-09-11 10:54:09">2025-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/10/Algorithm/Link_list/" title="链表 link list">链表 link list</a><time datetime="2025-09-11T01:49:57.270Z" title="Created 2025-09-10 20:49:57">2025-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/10/Algorithm/LeetCode/LeetCode_9_10_2025/" title="LeetCode 2025.9.10">LeetCode 2025.9.10</a><time datetime="2025-09-10T17:32:25.434Z" title="Created 2025-09-10 12:32:25">2025-09-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/09/Algorithm/LeetCode/LeetCode_9_9_2025/" title="LeetCode 2025.9.9">LeetCode 2025.9.9</a><time datetime="2025-09-09T14:36:18.173Z" title="Created 2025-09-09 09:36:18">2025-09-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/08/RL/First_week/" title="MDP, value function, Bellman function">MDP, value function, Bellman function</a><time datetime="2025-09-08T15:26:28.177Z" title="Created 2025-09-08 10:26:28">2025-09-08</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By CPOSA</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
